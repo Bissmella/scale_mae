@@ -83,8 +83,10 @@ class VisionTransformer(timm.models.vision_transformer.VisionTransformer):
             x = x[:, 1:, :].mean(dim=1)  # global pool without cls token
             outcome = self.fc_norm(x)
         else:
-            x = self.norm(x)
-            outcome = x[:, 0]
+            outcome = x
+            return outcome
+            #x = self.norm(x)
+            #outcome = x[:, 0]
 
         return outcome
 
